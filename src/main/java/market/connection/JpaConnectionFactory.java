@@ -6,13 +6,13 @@ import javax.persistence.Persistence;
 
 public class JpaConnectionFactory {
 
-	private EntityManagerFactory factory;
+    private EntityManagerFactory factory;
 
-	public JpaConnectionFactory() {
-		this.factory = Persistence.createEntityManagerFactory("market");
-	}
+    public JpaConnectionFactory() {
+        this.factory = Persistence.createEntityManagerFactory("market");
+    }
 
-	public EntityManager getEntityManager() {
-		return factory.createEntityManager();
-	}
+    public EntityManager getEntityManager() {
+        return factory.createEntityManager();
+    }
 }

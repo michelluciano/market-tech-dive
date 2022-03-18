@@ -10,85 +10,85 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Product {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
-	@Column(nullable = false, length = 64)
-	private String name;
-	
-	private String description;
-	
-	@Column(nullable = false)
-	private BigDecimal price;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id")
-	private Category category;
-	
-	public Product() {
-		
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-	public Product(long id, String name, String description, BigDecimal price, Category category) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.price = price;
-		this.category = category;
-	}
+    @Column(nullable = false, length = 64)
+    private String name;
 
-	public long getId() {
-		return id;
-	}
+    private String description;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    @Column(nullable = false)
+    private BigDecimal price;
 
-	public String getName() {
-		return name;
-	}
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Product() {
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public Product(String name, String description, BigDecimal price, Category category) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Category getCategory() {
-		return category;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
-	}
-	
-	
-	
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Product{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", price=").append(price);
+        sb.append(", category=").append(category);
+        sb.append('}');
+        return sb.toString();
+    }
 }
